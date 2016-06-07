@@ -1,1 +1,1 @@
-# dockerPhpNginx
+docker run -d -i --name dockerphpnginx -p 8080:80 -p 4443:443 -v /home/mario/www/g-mus-dev:/home/www/ mm75/dockerphpnginx && docker exec -it dockerphpnginx service nginx start && docker exec -it dockerphpnginx service php5-fpm start
