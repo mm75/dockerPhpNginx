@@ -1,6 +1,6 @@
 FROM debian
 
-MAINTAINER Jackson Veroneze <jackson@jacksonveroneze.com>
+MAINTAINER Mario Mendonça <mario.mendonca@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -41,24 +41,23 @@ ENV LANG pt_BR.UTF-8
 ENV LANGUAGE pt_BR.UTF-8
 ENV LC_ALL pt_BR
 
-
 RUN apt-get autoremove -y
 RUN apt-get clean
 RUN apt-get autoclean
 
 #RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
-RUN sed -i "s/;date.timezone =/date.timezone = America\/Sao_Paulo/" /etc/php5/cli/php.ini \
-    && sed -i "s/;date.timezone =/date.timezone = America\/Sao_Paulo/" /etc/php5/fpm/php.ini \
-    && sed -i "s/short_open_tag = On/short_open_tag = Off/" /etc/php5/cli/php.ini \
-    && sed -i "s/short_open_tag = On/short_open_tag = Off/" /etc/php5/fpm/php.ini \
-    && sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/" /etc/php5/cli/php.ini \
-    && sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/" /etc/php5/fpm/php.ini \
-    && sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/cli/php.ini \
-    && sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/fpm/php.ini \
-    && sed -i "s/display_startup_errors = Off/display_startup_errors = On/" /etc/php5/cli/php.ini \
-    && sed -i "s/display_startup_errors = Off/display_startup_errors = On/" /etc/php5/fpm/php.ini \
-    && sed -i "s/www-data;/www-data;\\ndaemon off;/g" /etc/nginx/nginx.conf
+#RUN sed -i "s/;date.timezone =/date.timezone = America\/Sao_Paulo/" /etc/php5/cli/php.ini \
+#    && sed -i "s/;date.timezone =/date.timezone = America\/Sao_Paulo/" /etc/php5/fpm/php.ini \
+#    && sed -i "s/short_open_tag = On/short_open_tag = Off/" /etc/php5/cli/php.ini \
+#    && sed -i "s/short_open_tag = On/short_open_tag = Off/" /etc/php5/fpm/php.ini \
+#    && sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/" /etc/php5/cli/php.ini \
+#    && sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/" /etc/php5/fpm/php.ini \
+#    && sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/cli/php.ini \
+#    && sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/fpm/php.ini \
+#    && sed -i "s/display_startup_errors = Off/display_startup_errors = On/" /etc/php5/cli/php.ini \
+#    && sed -i "s/display_startup_errors = Off/display_startup_errors = On/" /etc/php5/fpm/php.ini \
+#    && sed -i "s/www-data;/www-data;\\ndaemon off;/g" /etc/nginx/nginx.conf
 
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/fpm/php.ini
 RUN sed -i "s/;listen.allowed_clients = 127.0.0.1/listen.allowed_clients = 0.0.0.0/" /etc/php5/fpm/pool.d/www.conf
